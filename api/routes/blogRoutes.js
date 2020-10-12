@@ -1,19 +1,17 @@
 'use strict';
 module.exports = function (app) {
-    var todoList = require('../controllers/todoListController');
+    var blogPosts = require('../controllers/blogController');
 
     // todoList Routes
-    app.route('/tasks')
-        .get(todoList.list_all_tasks)
-        .post(todoList.create_a_task);
+    app.route('/posts')
+        .get(blogPosts.list_all_posts)
+        .post(blogPosts.create_a_post);
 
 
-    app.route('/tasks/:taskId')
-        .get(todoList.read_a_task)
-        .put(todoList.update_a_task)
-        .delete(todoList.delete_a_task)
-        .patch(todoList.patch_a_task)
+    app.route('/posts/:postId')
+        .get(blogPosts.read_a_post)
+        .put(blogPosts.update_a_post)
+        .delete(blogPosts.delete_a_post)
+        .patch(blogPosts.patch_a_post)
 
-    app.route('/completed')
-        .get(todoList.list_completed_tasks)
 };

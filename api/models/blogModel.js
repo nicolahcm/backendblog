@@ -3,36 +3,32 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 
-var TaskSchema = new Schema({
-    name: {
+var PostSchema = new Schema({
+    title: {
         type: String,
-        required: 'Kindly enter the name of the task'
+        required: 'Kindly enter the title'
     },
+
+    body: {
+        type: String,
+        required: 'Kindly enter the body'
+    },
+
     Created_date: {
         type: Date,
         default: Date.now
     },
 
-    status: {
-        type: [{
-            type: String,
-            enum: ['pending', 'ongoing', 'completed']
-        }],
-        default: ['pending']
+    public: {
+        type: Boolean,
+        default: true
     },
 
-
-    priority: {
+    featured: {
         type: Boolean,
         default: false
     },
-
-
-    archived: {
-        type: Boolean,
-        default: false
-    }
 
 });
 
-module.exports = mongoose.model('Tasks', TaskSchema);
+module.exports = mongoose.model('Posts', PostSchema);

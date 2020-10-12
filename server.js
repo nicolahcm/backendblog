@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-var routes = require('./api/routes/blogRoutes.js'); //importing route
+var routes = require('./api/routes/blogRoutes'); //importing route
 routes(app); //register the route
 
 

@@ -1,4 +1,4 @@
-This is the backend for our blog project. 
+This is the backend for our blog project With the BACKEND that uses the MONGO SERVER LOCALLY STORED. 
 Download this and the front-end, which is my MVCservicesStructure repository.
 
 Have them in 2 different folders.

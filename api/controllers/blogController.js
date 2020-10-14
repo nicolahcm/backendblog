@@ -6,13 +6,14 @@ var mongoose = require('mongoose'),
 
 exports.list_all_posts = function (req, res) {
     var query = req.query;
-    console.log("query", query);
-
+    //console.log("query", query);
+    res.setHeader('Access-Control-Allow-Origin', '*')
     Posts.find(query, /*{ sort: { featured: 1 } },*/ function (err, posts) {
         if (err)
             res.send(err);
-        console.log(posts);
-        res.json(posts)
+        //console.log(posts);
+        res.json(posts);
+        console.log("get request successfully sent");
         //res.json(posts);
     });
 };
@@ -21,6 +22,9 @@ exports.list_all_posts = function (req, res) {
 
 
 exports.create_a_post = function (req, res) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.set('Access-Control-Allow-Methods', 'GET,POST');
+    console.log("req body", req.body);
     var new_post = new Posts(req.body);
     new_post.save(function (err, post) {
         if (err)
@@ -52,11 +56,12 @@ exports.update_a_post = function (req, res) {
 
 
 exports.patch_a_post = function (req, res) {
-    Posts.findOneAndUpdate({ _id: req.params.postId }, { $set: req.body }, { new: true }, function (err, post) {
-        if (err)
-            res.send(err);
-        res.json(post);
-    });
+    Posts.findOneAndUpdate({ _id: req.params.postId }, { $set: req.body }, { new: true },
+        function (err, post) {
+            if (err)
+                res.send(err);
+            res.json(post);
+        });
 }
 
 
